@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Auto Open Tabs",
+  "version": "1.0",
+  "description": "Save, manage, and open your favorite tabs instantly with ease.",
+  "permissions": ["tabs", "storage"],
+  "action": {
+    "default_title": "Manage URLs",
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "128": "icon.png"
+  }
+}
