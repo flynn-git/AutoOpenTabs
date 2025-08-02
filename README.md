@@ -1,23 +1,26 @@
-# Auto Open Tabs
-# AI
-**Auto Open Tabs** is a lightweight and privacy-friendly Chrome extension that lets you save, manage, and open your favorite URLs all at once.
+# Auto Open Tabs - (GPT)
 
-Perfect for developers, researchers, or anyone who works with the same set of websites regularly.
+**Auto Open Tabs** is a lightweight, privacy-first Chrome extension that lets you save, rename, manage, and open your favorite URLs all at once — perfect for developers, researchers, and power users who want to boost productivity by quickly opening a curated set of websites.
 
 ---
 
 ## 🚀 Features
 
-- ✅ Save multiple custom URLs
-- ✅ One-click "Open All" button
-- ✅ Remove individual URLs anytime
-- ✅ Clean and responsive interface
-- ✅ 100% local storage – no data collection
+- ✅ Save multiple URLs with custom display names  
+- ✅ Inline renaming of URLs directly in the popup  
+- ✅ One-click **Open All** button to open all saved tabs instantly  
+- ✅ Remove individual URLs anytime  
+- ✅ Keyboard shortcut support (default: Ctrl+Shift+Y)  
+- ✅ Context menu option to save the current tab directly  
+- ✅ Desktop notifications when all tabs are opened  
+- ✅ Clean, modern, and responsive user interface  
+- ✅ 100% local storage — no data leaves your device  
 
 ---
 
 ## 🔧 Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/flynn-git/AutoOpenTabs.git
+- Clone the repository:
+
+  ```bash
+  git clone https://github.com/flynn-git/AutoOpenTabs.git

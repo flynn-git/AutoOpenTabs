@@ -3,159 +3,185 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Manage URLs</title>
+  <title>AutoOpenTabs</title>
   <style>
+    :root {
+      --primary: #2563eb;
+      --success: #22c55e;
+      --danger: #ef4444;
+      --gray: #e5e7eb;
+      --font: 'Segoe UI', Roboto, sans-serif;
+    }
+
     html, body {
-      background: #f9fafb;
-      border-radius: 12px;
       margin: 0;
       padding: 0;
+      font-family: var(--font);
+      background: #f9fafb;
+      color: #1f2937;
+      width: 300px;
+      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      padding: 10px 12px;
-      width: 280px;
-      color: #222;
-      font-weight: 600;
-      box-sizing: border-box;
-      overflow: hidden;
+      padding: 16px;
     }
 
     h3 {
-      margin: 0 0 8px 0;
+      font-size: 18px;
       font-weight: 700;
-      font-size: 16px;
-      color: #2c3e50;
       text-align: center;
+      margin-bottom: 12px;
+      color: #111827;
     }
 
     #urlInput {
       width: 100%;
-      padding: 7px 10px;
-      border: 2px solid #a0aec0;
-      border-radius: 5px;
+      padding: 8px 10px;
       font-size: 13px;
-      font-weight: 600;
+      border: 1.5px solid var(--gray);
+      border-radius: 8px;
+      outline: none;
       box-sizing: border-box;
-      transition: border-color 0.3s;
+      transition: border-color 0.2s;
     }
 
     #urlInput:focus {
-      border-color: #3182ce;
-      outline: none;
+      border-color: var(--primary);
     }
 
     .buttons-row {
-      margin-top: 8px;
       display: flex;
       gap: 8px;
+      margin-top: 12px;
     }
 
     button {
       flex: 1;
-      background-color: #3182ce;
-      color: white;
+      padding: 8px 0;
       border: none;
-      padding: 7px 0;
+      border-radius: 6px;
+      font-weight: 600;
       font-size: 13px;
-      font-weight: 700;
-      border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: background 0.2s, transform 0.1s;
     }
 
-    button:hover {
-      background-color: #2b6cb0;
+    #addBtn {
+      background-color: var(--primary);
+      color: #fff;
     }
 
     #openAllBtn {
-      background-color: #38a169;
+      background-color: var(--success);
+      color: #fff;
     }
 
-    #openAllBtn:hover {
-      background-color: #2f855a;
+    button:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
     }
 
     #messageBox {
       margin-top: 8px;
       font-size: 12px;
       text-align: center;
-      color: #e53e3e;
-      font-weight: 500;
+      color: var(--danger);
       min-height: 18px;
     }
 
     ul#urlList {
-      list-style: none;
-      margin: 12px 0 0 0;
+      margin-top: 14px;
       padding-left: 0;
-      max-height: 100px;
+      list-style: none;
+      max-height: 180px;
       overflow-y: auto;
-      border: 1px solid #e2e8f0;
-      border-radius: 5px;
-      background: #fff;
+      background: #ffffff;
+      border: 1px solid var(--gray);
+      border-radius: 8px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
 
     ul#urlList li {
-      font-size: 12px;
-      margin: 5px 0;
-      color: #4a5568;
-      word-break: break-word;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 4px 8px;
+      justify-content: space-between;
+      padding: 6px 10px;
+      font-size: 13px;
+      border-bottom: 1px solid var(--gray);
     }
 
-    ul#urlList li span.url-text {
-      width: 100%;
-      text-align: center;
+    ul#urlList li:last-child {
+      border-bottom: none;
     }
 
-    ul#urlList li button.remove-btn {
+    input.url-text {
+      flex: 1;
+      border: none;
+      background: transparent;
+      color: #2563eb;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    input.url-text:focus {
+      outline: none;
+      background-color: #f0f9ff;
+      border-radius: 4px;
+      padding: 2px 4px;
+    }
+
+    button.rename-btn,
+    button.remove-btn {
       background: transparent;
       border: none;
-      color: #e53e3e;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: 14px;
+      font-size: 13px;
+      font-weight: 600;
       padding: 2px 6px;
-      line-height: 1;
+      cursor: pointer;
       border-radius: 4px;
-      transition: background-color 0.2s ease, transform 0.2s ease;
-      margin-left: auto;
     }
 
-    ul#urlList li button.remove-btn:hover {
-      background-color: #fed7d7;
-      transform: scale(0.95);
+    button.rename-btn {
+      color: #6b7280;
+    }
+
+    button.remove-btn {
+      color: var(--danger);
+    }
+
+    button.rename-btn:hover {
+      background-color: #f1f5f9;
+    }
+
+    button.remove-btn:hover {
+      background-color: #fee2e2;
     }
 
     #copyright {
-      font-size: 11px;
-      color: #a0aec0;
       text-align: center;
-      margin-top: 8px;
-      padding-bottom: 4px;
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 12px;
     }
   </style>
 </head>
 <body>
-  <h3>Manage URLs</h3>
+  <h3>Auto Open Tabs</h3>
 
   <input type="text" id="urlInput" placeholder="Enter URL (e.g. https://example.com)" />
 
   <div class="buttons-row">
-    <button id="addBtn" title="Add URL">Add</button>
-    <button id="openAllBtn" title="Open all saved URLs">Open All</button>
+    <button id="addBtn">Add</button>
+    <button id="openAllBtn">Open All</button>
   </div>
 
   <div id="messageBox" role="alert" aria-live="polite"></div>
 
   <ul id="urlList" aria-label="Saved URLs"></ul>
 
-  <div id="copyright">© 2025 вα∂ вσу</div>
+  <div id="copyright">© 2025 Flynn Tools</div>
 
   <script src="popup.js"></script>
 </body>
