@@ -1,4 +1,4 @@
-# Auto Open Tabs - (GPT)
+# Auto Open Tabs
 
 **Auto Open Tabs** is a lightweight, privacy-first Chrome extension that lets you save, rename, manage, and open your favorite URLs all at once — perfect for developers, researchers, and power users who want to boost productivity by quickly opening a curated set of websites.
 
